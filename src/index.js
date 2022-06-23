@@ -10,6 +10,9 @@ root.render(
   <React.StrictMode>
     <App />
     <Weather city="Sao Paulo" />
+    <div className="source">
+      <a href="/">Open Source code</a> by <a href="/">Claudia Boden</a>
+    </div>
   </React.StrictMode>
 );
 
