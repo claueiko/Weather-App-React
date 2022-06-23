@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Weather from "./Weather";
+
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
-    <Weather city="Sao Paulo" />
+
     <div className="source">
       <a href="/">Open Source code</a> by <a href="/">Claudia Boden</a>
     </div>
