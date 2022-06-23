@@ -1,11 +1,12 @@
 import "./App.css";
 import ReactAnimatedWeather from "react-animated-weather";
+import "bootstrap/dist/css/bootstrap.css";
 
 export default function App() {
   return (
     <div className="App">
       <div className="container main">
-        <div className="row justify-content-center align-items-center">
+        <div className="row d-flex justify-content-center align-items-center">
           <div className="col">
             <form>
               <input
@@ -13,14 +14,16 @@ export default function App() {
                 className="form-control"
                 placeholder="Enter a city"
               />{" "}
-              <span className="row justify-content-center align-items-center">
-                <button type="submit" className="btn btn-primary m-2">
-                  Search
-                </button>
-                <button type="submit" className="btn btn-warning m-2">
-                  Current
-                </button>
-              </span>
+              <div className="row d-flex justify-content-center">
+                <div className="col text-center">
+                  <button type="submit " className="btn btn-primary m-2 ">
+                    Search
+                  </button>
+                  <button type="submit" className="btn btn-warning m-2">
+                    Current
+                  </button>
+                </div>
+              </div>
             </form>
 
             <h1>London</h1>
@@ -28,8 +31,9 @@ export default function App() {
           </div>
         </div>
         <div className="row justify-content-center align-items-center mb-3">
-          <div className="col">
-            <h2 className="text-right">19C</h2>
+          <div className="col text-center">
+            <h2>19°C</h2>
+            <p className="units"> °C | °F</p>
           </div>
           <div className="col ">
             <ReactAnimatedWeather
@@ -63,7 +67,7 @@ export default function App() {
                 size={51}
                 animate={true}
               />
-              <p>11C</p>
+              <p>11°C</p>
             </div>
             <div className="col text-center">
               <p>Fri</p>
@@ -73,7 +77,7 @@ export default function App() {
                 size={51}
                 animate={true}
               />
-              <p>14C</p>
+              <p>14°C</p>
             </div>
             <div className="col text-center">
               <p>Sat</p>
@@ -83,7 +87,7 @@ export default function App() {
                 size={51}
                 animate={true}
               />
-              <p>17C</p>
+              <p>17C°</p>
             </div>
             <div className="col text-center">
               <p>Sun</p>
@@ -93,7 +97,7 @@ export default function App() {
                 size={51}
                 animate={true}
               />
-              <p>19C</p>
+              <p>19°C</p>
             </div>
             <div className="col text-center">
               <p>Mon</p>
@@ -103,7 +107,7 @@ export default function App() {
                 size={51}
                 animate={true}
               />
-              <p>21C</p>
+              <p>21°C</p>
             </div>
           </div>
         </div>

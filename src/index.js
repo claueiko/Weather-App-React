@@ -11,7 +11,11 @@ root.render(
     <App />
 
     <div className="source">
-      <a href="https://github.com/claueiko/weather-react" target="_blank">
+      <a
+        href="https://github.com/claueiko/weather-react"
+        rel="noreferrer"
+        target="_blank"
+      >
         Open Source code
       </a>{" "}
       by <a href="mailto:claudiaboden@gmail.com">Claudia Boden</a>
