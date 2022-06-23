@@ -11,8 +11,10 @@ root.render(
     <App />
 
     <div className="source">
-      <a href="https://github.com/claueiko/weather-react">Open Source code</a>{" "}
-      by <a href="/">Claudia Boden</a>
+      <a href="https://github.com/claueiko/weather-react" target="_blank">
+        Open Source code
+      </a>{" "}
+      by <a href="mailto:claudiaboden@gmail.com">Claudia Boden</a>
     </div>
   </React.StrictMode>
 );
