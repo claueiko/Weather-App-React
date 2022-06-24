@@ -8,6 +8,7 @@ import axios from "axios";
 export default function App(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({});
+  const [city, setCity] = useState(props.city);
   function handleResponse(response) {
     setWeatherData({
       temperature: response.data.main.temp,
@@ -20,17 +21,34 @@ export default function App(props) {
 
     setReady(true);
   }
+
+  function search() {
+    const apiKey = "7e6ea4ddbec2858b966d408889803cb7";
+
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
   if (ready) {
     return (
       <div className="App">
         <div className="container main">
           <div className="row d-flex justify-content-center align-items-center">
             <div className="col">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Enter a city"
+                  onChange={handleCityChange}
                 />{" "}
                 <div className="row d-flex justify-content-center">
                   <div className="col text-center">
@@ -43,11 +61,12 @@ export default function App(props) {
                   </div>
                 </div>
               </form>
-
-              <h1>{props.city}</h1>
-              <p className="current-date text-center">
-                <DateNow date={weatherData.date} />
-              </p>
+              <div>
+                <h1>{city}</h1>
+                <p className="current-date text-center">
+                  <DateNow date={weatherData.date} />
+                </p>
+              </div>
             </div>
           </div>
           <div className="row justify-content-center align-items-center mb-3">
@@ -135,9 +154,7 @@ export default function App(props) {
       </div>
     );
   } else {
-    const apiKey = "7e6ea4ddbec2858b966d408889803cb7";
-    let city = "Dubai";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
+    return "Loading...";
   }
 }
