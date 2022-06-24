@@ -9,6 +9,7 @@ export default function App(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({});
   const [city, setCity] = useState(props.city);
+
   function handleResponse(response) {
     setWeatherData({
       temperature: response.data.main.temp,
@@ -22,19 +23,19 @@ export default function App(props) {
     setReady(true);
   }
 
-  function search() {
-    const apiKey = "7e6ea4ddbec2858b966d408889803cb7";
-
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     search();
   }
+
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "7e6ea4ddbec2858b966d408889803cb7";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (ready) {
@@ -62,7 +63,7 @@ export default function App(props) {
                 </div>
               </form>
               <div>
-                <h1>{city}</h1>
+                <h1 className="text-capitalize">{city}</h1>
                 <p className="current-date text-center">
                   <DateNow date={weatherData.date} />
                 </p>
