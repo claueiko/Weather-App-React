@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import DateNow from "./DateNow";
 import "./App.css";
 import ReactAnimatedWeather from "react-animated-weather";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-export default function App() {
+export default function App(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({});
   function handleResponse(response) {
@@ -14,7 +15,7 @@ export default function App() {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       city: response.data.name,
-      date: "Thursday 8-98",
+      date: new Date(response.data.dt * 1000),
     });
 
     setReady(true);
@@ -43,8 +44,10 @@ export default function App() {
                 </div>
               </form>
 
-              <h1>London</h1>
-              <p className="current-date text-center">{weatherData.date}</p>
+              <h1>{props.city}</h1>
+              <p className="current-date text-center">
+                <DateNow date={weatherData.date} />
+              </p>
             </div>
           </div>
           <div className="row justify-content-center align-items-center mb-3">
@@ -61,7 +64,7 @@ export default function App() {
               />
             </div>
           </div>
-          <div classname="container details">
+          <div className="container details">
             <div className="row">
               <div className="col text-center">
                 <p className="text-capitalize">{weatherData.description}</p>
@@ -74,7 +77,7 @@ export default function App() {
               </div>
             </div>
           </div>
-          <div classname="container">
+          <div className="container">
             <div className="row forecast">
               <div className="col text-center">
                 <p>Thu</p>
@@ -133,7 +136,7 @@ export default function App() {
     );
   } else {
     const apiKey = "7e6ea4ddbec2858b966d408889803cb7";
-    let city = "London";
+    let city = "Dubai";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
