@@ -56,7 +56,7 @@ export default function App(props) {
                 <div className="row d-flex justify-content-center">
                   <div className="col text-center">
                     <button type="submit " className="btn btn-primary m-2 ">
-                      Search oioi
+                      Search
                     </button>
                     <button type="submit" className="btn btn-warning m-2">
                       Current
