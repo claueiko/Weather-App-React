@@ -4,6 +4,7 @@ import "./App.css";
 import ReactAnimatedWeather from "react-animated-weather";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
+import WeatherIcon from "./WeatherIcon";
 
 export default function App(props) {
   const [ready, setReady] = useState(false);
@@ -18,6 +19,7 @@ export default function App(props) {
       description: response.data.weather[0].description,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
+      icon: response.data.weather[0].icon,
     });
 
     setReady(true);
@@ -63,7 +65,7 @@ export default function App(props) {
                 </div>
               </form>
               <div>
-                <h1 className="text-capitalize">{city}</h1>
+                <h1 className="text-capitalize">{weatherData.city}</h1>
                 <p className="current-date text-center">
                   <DateNow date={weatherData.date} />
                 </p>
@@ -76,12 +78,7 @@ export default function App(props) {
               <p className="units"> °C | °F</p>
             </div>
             <div className="col ">
-              <ReactAnimatedWeather
-                icon="CLEAR_DAY"
-                color="orange"
-                size={71}
-                animate={true}
-              />
+              <WeatherIcon code={weatherData.icon} />
             </div>
           </div>
           <div className="container details">
