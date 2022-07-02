@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
+import Forecast from "./Forecast";
 
 export default function App(props) {
   const [ready, setReady] = useState(false);
@@ -94,60 +95,7 @@ export default function App(props) {
               </div>
             </div>
           </div>
-          <div className="container">
-            <div className="row forecast">
-              <div className="col text-center">
-                <p>Thu</p>
-                <ReactAnimatedWeather
-                  icon="RAIN"
-                  color="blue"
-                  size={51}
-                  animate={true}
-                />
-                <p>11°C</p>
-              </div>
-              <div className="col text-center">
-                <p>Fri</p>
-                <ReactAnimatedWeather
-                  icon="CLOUDY"
-                  color="gray"
-                  size={51}
-                  animate={true}
-                />
-                <p>14°C</p>
-              </div>
-              <div className="col text-center">
-                <p>Sat</p>
-                <ReactAnimatedWeather
-                  icon="WIND"
-                  color="gray"
-                  size={51}
-                  animate={true}
-                />
-                <p>17C°</p>
-              </div>
-              <div className="col text-center">
-                <p>Sun</p>
-                <ReactAnimatedWeather
-                  icon="CLEAR_DAY"
-                  color="orange"
-                  size={51}
-                  animate={true}
-                />
-                <p>19°C</p>
-              </div>
-              <div className="col text-center">
-                <p>Mon</p>
-                <ReactAnimatedWeather
-                  icon="CLEAR_DAY"
-                  color="orange"
-                  size={51}
-                  animate={true}
-                />
-                <p>21°C</p>
-              </div>
-            </div>
-          </div>
+          <Forecast />
         </div>
       </div>
     );
