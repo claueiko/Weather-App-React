@@ -23,10 +23,7 @@
   font-weight: 900;
   text-align: right;
 }
-.App .units {
-  text-align: right;
-  margin-top: -15px;
-}
+
 .App .details {
   font-size: 17px;
   font-family: poppins;

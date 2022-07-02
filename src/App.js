@@ -5,6 +5,7 @@ import ReactAnimatedWeather from "react-animated-weather";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function App(props) {
   const [ready, setReady] = useState(false);
@@ -74,8 +75,7 @@ export default function App(props) {
           </div>
           <div className="row justify-content-center align-items-center mb-3">
             <div className="col text-center">
-              <h2>{Math.round(weatherData.temperature)}°C</h2>
-              <p className="units"> °C | °F</p>
+              <WeatherTemperature celsius={weatherData.temperature} />
             </div>
             <div className="col ">
               <WeatherIcon code={weatherData.icon} />
