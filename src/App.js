@@ -22,6 +22,7 @@ export default function App(props) {
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       icon: response.data.weather[0].icon,
+      coord: response.data.coord,
     });
 
     setReady(true);
@@ -37,7 +38,7 @@ export default function App(props) {
   }
 
   function search() {
-    const apiKey = "7e6ea4ddbec2858b966d408889803cb7";
+    const apiKey = "d94e59d63240dae37b83f62bc6afbd84";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -79,7 +80,7 @@ export default function App(props) {
               <WeatherTemperature celsius={weatherData.temperature} />
             </div>
             <div className="col ">
-              <WeatherIcon code={weatherData.icon} />
+              <WeatherIcon code={weatherData.icon} size={77} />
             </div>
           </div>
           <div className="container details">
@@ -95,7 +96,7 @@ export default function App(props) {
               </div>
             </div>
           </div>
-          <Forecast />
+          <Forecast coord={weatherData.coord} />
         </div>
       </div>
     );
